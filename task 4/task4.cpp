@@ -43,18 +43,71 @@ public:
     {
         if (tasksList.size() < index)
         {
-            cout << "Invalid task index"<<endl;
-        } else {
-            tasksList[index-1].completed=true;
-            cout << "Marked task as completed"<<endl;
+            cout << "Invalid task index" << endl;
+        }
+        else
+        {
+            tasksList[index].completed = true;
+            cout << "Marked task as completed" << endl;
+        }
+    }
+
+    void removeTask(int index)
+    {
+        if (index < tasksList.size())
+        {
+            tasksList.erase(tasksList.begin() + index);
+            cout << "Task removed" << endl;
+        }
+        else
+        {
+            cout << "Invalid task index" << endl;
         }
     }
 };
 
 int main()
 {
+    ToDoList toDoList;
+    int choice;
+    string taskDesc;
+    cout << "----------To Do List----------" << endl;
+    do
+    {
+        cout << "1. Add Tasks\n2. Display Tasks\n3. Mark Tasks as Completed\n4. Remove Tasks\n5. Exit" << endl;
+        cout << "Enter your choice" << endl;
+        cin >> choice;
 
-    string inputUser;
-
+        switch (choice)
+        {
+        case 1:
+            cout << "Enter task description" << endl;
+            cin.ignore();
+            getline(cin, taskDesc);
+            toDoList.addTask(taskDesc);
+            break;
+        case 2:
+            toDoList.viewTasks();
+            break;
+        case 3:
+            int index;
+            cout << "Enter index of task to be marked as [Completed] : ";
+            cin >> index;
+            toDoList.taskCompleted(index - 1);
+            break;
+        case 4:
+            int index;
+            cout << "Enter task index to be removed : ";
+            cin >> index;
+            toDoList.removeTask(index - 1);
+            break;
+        case 5:
+            cout << "Exiting ....";
+            break;
+        default:
+            cout<<"Invalid choice, Try Again"<<endl;
+            break;
+        }
+    } while (choice != 5);
     return 0;
 }
