@@ -74,7 +74,7 @@ int main()
     cout << "----------To Do List----------" << endl;
     do
     {
-        cout << "1. Add Tasks\n2. Display Tasks\n3. Mark Tasks as Completed\n4. Remove Tasks\n5. Exit" << endl;
+        cout << "\n1. Add Tasks\n2. Display Tasks\n3. Mark Tasks as Completed\n4. Remove Tasks\n5. Exit" << endl;
         cout << "Enter your choice" << endl;
         cin >> choice;
 
@@ -90,16 +90,16 @@ int main()
             toDoList.viewTasks();
             break;
         case 3:
-            int index;
+            int indexc;
             cout << "Enter index of task to be marked as [Completed] : ";
-            cin >> index;
-            toDoList.taskCompleted(index - 1);
+            cin >> indexc;
+            toDoList.taskCompleted(indexc - 1);
             break;
         case 4:
-            int index;
+            int indexr;
             cout << "Enter task index to be removed : ";
-            cin >> index;
-            toDoList.removeTask(index - 1);
+            cin >> indexr;
+            toDoList.removeTask(indexr - 1);
             break;
         case 5:
             cout << "Exiting ....";
